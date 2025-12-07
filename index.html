@@ -15,8 +15,6 @@
       --red-dark: #7f1d1d;
       --green: #15803d;
       --green-dark: #065f46;
-      --bg1: #020617;
-      --bg2: #0f172a;
       --text-light: #f9fafb;
     }
 
@@ -25,15 +23,19 @@
 
     body {
       font-family: "Cairo", sans-serif;
-      background:
-        radial-gradient(circle at top, #1e293b, transparent 60%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
       color: var(--text-light);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
+
+      /* 👇 خلفية luck.jpg */
+      background-image: url("luck.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
     /* top light garland (very lightweight) */
@@ -252,7 +254,7 @@
     </div>
 
     <div id="result">جاهزة! اضغط الزر لتدوير عجلة الكريسماس 🎄</div>
-    <button id="spin-btn">ابدأ التدوير  🎅</button>
+    <button id="spin-btn">ابدأ التدوير مع الموسيقى 🎶</button>
   </div>
 
   <!-- الأصوات -->
