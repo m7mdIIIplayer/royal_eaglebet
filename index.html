@@ -12,12 +12,10 @@
       --gold: #ffd700;
       --gold-soft: #ffec8b;
       --red: #b40024;
-      --red-dark: #780018;
       --green: #0c7c3d;
-      --green-dark: #064524;
-      --snow-white: #f8f9ff;
-      --bg1: #050814;
-      --bg2: #000007;
+      --dark: #030712;
+      --dark-soft: #111827;
+      --text-light: #f9fafb;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,143 +23,48 @@
 
     body {
       font-family: "Cairo", sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.18) 0, transparent 55%),
-        radial-gradient(circle at bottom, rgba(255,0,0,0.25) 0, transparent 60%),
-        linear-gradient(160deg, #04101a, #05030b 45%, #051c10 100%);
-      color: #fff;
+      background: radial-gradient(circle at top, #1f2933, #030712);
+      color: var(--text-light);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
-    }
-
-    /* faint christmas lights at top */
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,0,80,0.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 25% 0%, rgba(255,255,130,0.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 40% 0%, rgba(0,255,160,0.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 55% 0%, rgba(255,0,80,0.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 70% 0%, rgba(255,255,130,0.45) 0 2px, transparent 3px),
-        radial-gradient(circle at 85% 0%, rgba(0,255,160,0.45) 0 2px, transparent 3px);
-      opacity: 0.45;
-      mix-blend-mode: screen;
-      z-index: 0;
     }
 
     #app-wrapper {
-      position: relative;
-      z-index: 2; /* above snow and decorations */
+      width: 100%;
+      max-width: 480px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 10px 16px 24px;
-      width: 100%;
-      max-width: 480px;
+      gap: 12px;
     }
 
     #logo {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(30px, 6vw, 42px);
+      font-size: clamp(28px, 6vw, 40px);
       letter-spacing: 4px;
       color: var(--gold-soft);
-      text-shadow:
-        0 0 12px rgba(0,0,0,0.9),
-        0 0 18px rgba(255,215,0,0.9),
-        0 0 40px rgba(255,215,0,0.7);
-      animation: logo-glow 2.4s infinite alternate;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    #logo::before,
-    #logo::after {
-      content: "✴";
-      font-size: 18px;
-      color: var(--gold-soft);
-    }
-
-    @keyframes logo-glow {
-      from {
-        text-shadow:
-          0 0 8px rgba(0,0,0,0.9),
-          0 0 16px rgba(255,215,0,0.65),
-          0 0 30px rgba(255,215,0,0.5);
-        transform: translateY(0);
-      }
-      to {
-        text-shadow:
-          0 0 14px rgba(0,0,0,0.9),
-          0 0 26px rgba(255,255,190,0.95),
-          0 0 55px rgba(255,215,0,0.9);
-        transform: translateY(-1px);
-      }
     }
 
     h2 {
-      color: #fff;
-      text-shadow: 0 0 12px rgba(0,0,0,0.8);
-      font-size: clamp(18px, 4.5vw, 24px);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      justify-content: center;
-    }
-
-    h2::before,
-    h2::after {
-      content: "🎄";
-      font-size: 18px;
+      font-size: clamp(18px, 4.5vw, 22px);
+      color: #e5e7eb;
     }
 
     #wheel-container {
       position: relative;
-      width: min(90vw, 70vh);
-      height: min(90vw, 70vh);
-      max-width: 420px;
-      max-height: 420px;
+      width: min(80vw, 70vh);
+      height: min(80vw, 70vh);
+      max-width: 360px;
+      max-height: 360px;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.22), transparent 55%),
-        radial-gradient(circle, #00151f, #000);
-      box-shadow:
-        0 0 40px rgba(0,0,0,0.9),
-        0 0 70px rgba(255,255,255,0.12);
+      background: radial-gradient(circle, #020617, #020617);
+      border: 4px solid #1f2937;
       display: flex;
-      justify-content: center;
       align-items: center;
-      overflow: visible;
-      border: 4px solid rgba(255,255,255,0.08);
-    }
-
-    /* wreath-like outer border */
-    #wheel-container::before {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background:
-        repeating-conic-gradient(
-          from 90deg,
-          var(--green) 0 10deg,
-          var(--green-dark) 10deg 20deg,
-          var(--red) 20deg 30deg,
-          var(--red-dark) 30deg 40deg
-        );
-      opacity: 0.28;
-      filter: blur(1px);
-      z-index: -1;
+      justify-content: center;
     }
 
     #pointer {
@@ -169,43 +72,24 @@
       top: 50%;
       right: 0;
       transform: translate(50%, -50%);
-      width: 26px;
-      height: 26px;
-      background: radial-gradient(circle at 30% 30%, #fff, #ffe29f, #f39c12);
+      width: 24px;
+      height: 24px;
+      background: #facc15;
       border-radius: 50%;
-      border: 2px solid rgba(120, 50, 0, 0.9);
-      z-index: 9999;
-      box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.6),
-        0 0 18px rgba(255, 215, 0, 0.9),
-        inset 0 1px 3px rgba(255, 255, 255, 0.6);
-    }
-
-    /* small star on pointer */
-    #pointer::before {
-      content: "✴";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: rgba(120, 50, 0, 0.9);
-      text-shadow: 0 0 4px rgba(255,255,255,0.8);
+      border: 2px solid #92400e;
     }
 
     #pointer::after {
       content: "";
       position: absolute;
       top: 50%;
-      left: -16px;
+      left: -14px;
       transform: translateY(-50%);
       width: 0;
       height: 0;
       border-top: 7px solid transparent;
       border-bottom: 7px solid transparent;
-      border-right: 16px solid var(--gold);
-      filter: drop-shadow(0 0 4px rgba(0,0,0,0.8));
+      border-right: 14px solid #facc15;
     }
 
     canvas {
@@ -215,97 +99,42 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 10px solid var(--gold);
+      border: 8px solid var(--gold);
       transition: transform 6s cubic-bezier(0.33, 1, 0.68, 1);
-      box-shadow:
-        inset 0 0 40px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(255, 215, 0, 0.85);
       background: transparent;
+      will-change: transform; /* GPU hint */
     }
 
     #result {
-      font-size: clamp(18px, 5vw, 22px);
-      font-weight: bold;
-      color: var(--snow-white);
-      text-shadow:
-        0 0 10px rgba(0,0,0,0.8),
-        0 0 18px rgba(255,255,255,0.75);
-      margin-top: 18px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: linear-gradient(
-        135deg,
-        rgba(0,0,0,0.6),
-        rgba(0,0,0,0.9)
-      );
-      backdrop-filter: blur(6px);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    #result::before {
-      content: "❄️";
-      font-size: 18px;
-    }
-
-    /* Spin button */
-    #spin-btn {
       margin-top: 12px;
+      font-size: 16px;
+      color: #e5e7eb;
+    }
+
+    #spin-btn {
+      margin-top: 8px;
       padding: 10px 20px;
       border-radius: 999px;
       border: none;
       font-family: "Cairo", sans-serif;
       font-size: 16px;
       cursor: pointer;
-      background: linear-gradient(135deg, #ff4b5c, #b40024);
-      color: #fff;
-      box-shadow: 0 0 12px rgba(0,0,0,0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      background: linear-gradient(135deg, var(--red), #7f1d1d);
+      color: #f9fafb;
     }
 
     #spin-btn:active {
       transform: scale(0.97);
     }
 
-    /* SNOW EFFECT */
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: #fff;
-      font-size: 10px;
-      pointer-events: none;
-      user-select: none;
-      z-index: 1; /* under app-wrapper but over background */
-      animation-name: snowfall;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes snowfall {
-      0% {
-        transform: translate3d(0, -10px, 0) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.9;
-      }
-      100% {
-        transform: translate3d(15px, 110vh, 0) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
     @media (max-height: 560px) {
       #app-wrapper {
-        padding-top: 6px;
+        padding-top: 4px;
+        padding-bottom: 8px;
       }
       #wheel-container {
-        max-height: 340px;
-        max-width: 340px;
+        max-width: 300px;
+        max-height: 300px;
       }
     }
   </style>
@@ -325,43 +154,14 @@
     <button id="spin-btn">🎅 ابدأ التدوير مع الموسيقى 🎶</button>
   </div>
 
-  <audio id="spin-sound" src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_91be71e4f8.mp3?filename=wheel-spin-14288.mp3"></audio>
-  <audio id="win-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_41a0d6edbe.mp3?filename=win-celebration-121114.mp3"></audio>
-  <!-- الخلفية الموسيقية المطلوبة -->
-  <audio id="bg-music" src="wheel.mp3" loop></audio>
+  <!-- الأصوات -->
+  <audio id="spin-sound" src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_91be71e4f8.mp3?filename=wheel-spin-14288.mp3" preload="auto"></audio>
+  <audio id="win-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_41a0d6edbe.mp3?filename=win-celebration-121114.mp3" preload="auto"></audio>
+  <audio id="bg-music" src="wheel.mp3" loop preload="auto"></audio>
 
   <script>
     const tg = window.Telegram?.WebApp;
     if (tg) tg.expand();
-
-    /* SNOW GENERATOR – purely visual, does not affect wheel logic */
-    (function createSnow() {
-      const NUM_FLAKES = 60;
-      const symbols = ["❆", "❄", "✼", "✻"];
-
-      for (let i = 0; i < NUM_FLAKES; i++) {
-        const span = document.createElement("span");
-        span.className = "snowflake";
-        span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-
-        const size = 8 + Math.random() * 10;
-        span.style.fontSize = size + "px";
-
-        const startLeft = Math.random() * 100;
-        span.style.left = startLeft + "vw";
-
-        const duration = 7 + Math.random() * 8;
-        span.style.animationDuration = duration + "s";
-
-        const delay = Math.random() * -duration;
-        span.style.animationDelay = delay + "s";
-
-        const drift = (Math.random() * 2 - 1) * 15; // -15 to 15
-        span.style.setProperty("--drift", drift + "px");
-
-        document.body.appendChild(span);
-      }
-    })();
 
     const prizes = [
       "حظ أوفر",
@@ -375,15 +175,6 @@
       "5M",
       "10M"
     ];
-
-    // (colors kept conceptually for theming, actual drawing uses gradients)
-    const colors = Array(prizes.length)
-      .fill()
-      .map((_, i) =>
-        i % 2 === 0
-          ? "linear-gradient(135deg, #c0c0c0, #7a7a7a)"
-          : "#000000"
-      );
 
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -403,20 +194,14 @@
 
       for (let i = 0; i < prizes.length; i++) {
         const angle = i * arc;
-
-        // Christmas-style gradients: alternating red/gold & green
         const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+
         if (i % 2 === 0) {
-          // red & gold
-          grad.addColorStop(0, "#ffe7a3");
-          grad.addColorStop(0.4, "#ffb347");
-          grad.addColorStop(0.7, "#b40024");
-          grad.addColorStop(1, "#780018");
+          grad.addColorStop(0, "#fee2e2"); // light red
+          grad.addColorStop(1, "#b91c1c"); // dark red
         } else {
-          // green
-          grad.addColorStop(0, "#c9ffd9");
-          grad.addColorStop(0.45, "#0c7c3d");
-          grad.addColorStop(0.9, "#064524");
+          grad.addColorStop(0, "#dcfce7"); // light green
+          grad.addColorStop(1, "#15803d"); // dark green
         }
 
         ctx.beginPath();
@@ -425,45 +210,22 @@
         ctx.arc(r, r, r, angle, angle + arc);
         ctx.fill();
 
-        // Prize text
         ctx.save();
         ctx.translate(r, r);
         ctx.rotate(angle + arc / 2);
-        ctx.fillStyle = i % 2 === 0 ? "#fffdf2" : "#fff8e1";
+        ctx.fillStyle = "#111827";
         ctx.font = `${Math.max(12, Math.floor(r * 0.06))}px Cairo`;
         ctx.textAlign = "right";
-        ctx.shadowColor = "rgba(0,0,0,0.9)";
-        ctx.shadowBlur = 4;
-        ctx.fillText(
-          prizes[i],
-          r - Math.max(14, Math.floor(r * 0.04)),
-          5
-        );
+        ctx.fillText(prizes[i], r - Math.max(14, Math.floor(r * 0.04)), 5);
         ctx.restore();
       }
 
-      // center ornament
-      const centerRadius = r * 0.16;
-      const centerGrad = ctx.createRadialGradient(
-        r - centerRadius / 2,
-        r - centerRadius / 2,
-        2,
-        r,
-        r,
-        centerRadius
-      );
-      centerGrad.addColorStop(0, "#fffcec");
-      centerGrad.addColorStop(0.4, "#ffe08a");
-      centerGrad.addColorStop(1, "#f39c12");
-
+      // center circle
+      const centerRadius = r * 0.18;
       ctx.beginPath();
-      ctx.fillStyle = centerGrad;
+      ctx.fillStyle = "#facc15";
       ctx.arc(r, r, centerRadius, 0, 2 * Math.PI);
       ctx.fill();
-
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "rgba(120, 50, 0, 0.95)";
-      ctx.stroke();
     }
 
     window.addEventListener("resize", sizeCanvas);
@@ -495,23 +257,27 @@
     const finalRotation = 360 * 5 + stopAngle;
 
     const spinSound = document.getElementById("spin-sound");
-    const winSound = document.getElementById("win-sound");
-    const bgMusic  = document.getElementById("bg-music");
-    const spinBtn  = document.getElementById("spin-btn");
+    const winSound  = document.getElementById("win-sound");
+    const bgMusic   = document.getElementById("bg-music");
+    const spinBtn   = document.getElementById("spin-btn");
+
+    // Preload (helps avoid tiny stutter on first play)
+    function preloadAudio() {
+      spinSound.load();
+      winSound.load();
+      bgMusic.load();
+    }
+    preloadAudio();
 
     function startWheel() {
-      // hide and disable button to avoid double spins
-      if (spinBtn) {
-        spinBtn.disabled = true;
-        spinBtn.style.display = "none";
-      }
+      // prevent multiple clicks
+      spinBtn.disabled = true;
+      spinBtn.style.display = "none";
 
       // start background music
-      if (bgMusic) {
-        bgMusic.currentTime = 0;
-        bgMusic.volume = 0.4;
-        bgMusic.play().catch(() => {});
-      }
+      bgMusic.currentTime = 0;
+      bgMusic.volume = 0.4;
+      bgMusic.play().catch(() => {});
 
       // spin sound + rotation
       setTimeout(() => {
@@ -529,9 +295,7 @@
       }, 6500);
     }
 
-    if (spinBtn) {
-      spinBtn.addEventListener("click", startWheel);
-    }
+    spinBtn.addEventListener("click", startWheel);
   </script>
 </body>
 </html>
