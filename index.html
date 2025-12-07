@@ -154,6 +154,7 @@
       justify-content: center;
       font-size: 12px;
       color: #78350f;
+      z-index: 2; /* above the wheel */
     }
 
     #pointer::after {
@@ -173,7 +174,7 @@
       content: "★";
     }
 
-    canvas#wheel-canvas {
+    #wheel-canvas {
       position: absolute;
       inset: 0;
       margin: auto;
@@ -187,6 +188,7 @@
       box-shadow:
         inset 0 0 18px rgba(0,0,0,0.8),
         0 0 18px rgba(250,204,21,0.6);
+      z-index: 1; /* under the pointer */
     }
 
     #result {
@@ -254,9 +256,25 @@
   </div>
 
   <!-- الأصوات -->
-  <audio id="spin-sound" src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_91be71e4f8.mp3?filename=wheel-spin-14288.mp3" preload="auto"></audio>
-  <audio id="win-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_41a0d6edbe.mp3?filename=win-celebration-121114.mp3" preload="auto"></audio>
-  <audio id="bg-music" src="wheel.mp3" loop preload="auto"></audio>
+  <audio
+    id="spin-sound"
+    src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_91be71e4f8.mp3?filename=wheel-spin-14288.mp3"
+    preload="auto">
+  </audio>
+
+  <audio
+    id="win-sound"
+    src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_41a0d6edbe.mp3?filename=win-celebration-121114.mp3"
+    preload="auto">
+  </audio>
+
+  <!-- خلفية الكريسماس من الرابط الذي أعطيتني إياه -->
+  <audio
+    id="bg-music"
+    src="https://www.djerycom.ug/download?link=uploads%2Fmp3%2FWe+Wish+You+A+Merry+Chhristmas+-+Kids+%28erycom%29_1544045484.mp3"
+    loop
+    preload="auto">
+  </audio>
 
   <script>
     const tg = window.Telegram?.WebApp;
@@ -316,7 +334,7 @@
     window.addEventListener("resize", resizeSnow);
     loopSnow();
 
-    /* ---------- WHEEL LOGIC (unchanged) ---------- */
+    /* ---------- WHEEL LOGIC ---------- */
 
     const prizes = [
       "حظ أوفر",
@@ -417,7 +435,6 @@
     const bgMusic   = document.getElementById("bg-music");
     const spinBtn   = document.getElementById("spin-btn");
 
-    // light preloading of audio
     function preloadAudio() {
       spinSound.load();
       winSound.load();
@@ -429,7 +446,7 @@
       spinBtn.disabled = true;
       spinBtn.style.display = "none";
 
-      // background music
+      // background music from your URL
       bgMusic.currentTime = 0;
       bgMusic.volume = 0.4;
       bgMusic.play().catch(() => {});
